@@ -7,71 +7,65 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <!-- شريط التحكم العلوي -->
     <nav class="top-nav">
-        <div class="nav-container">
-            <button id="themeToggle" class="nav-btn">🌙</button>
-            <button id="langToggle" class="nav-btn">English</button>
-        </div>
+        <button class="nav-btn" id="langToggle">English</button>
+        <button class="nav-btn" id="themeToggle">🌓</button>
     </nav>
 
     <header>
-        <div class="logo-area">
-            <h1 data-ar="دليل الوسطاء الموثوقين" data-en="Trusted Middlemen Directory">دليل الوسطاء الموثوقين</h1>
-            <p data-ar="تأكد من هوية الوسيط عبر الصور والبيانات الرسمية" data-en="Verify identity via official photos and data">تأكد من هوية الوسيط عبر الصور والبيانات الرسمية</p>
+        <!-- شعار eFootball المضيء -->
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/EFootball_Logo.svg/1200px-EFootball_Logo.svg.png" alt="eFootball Logo" class="ef-logo">
         </div>
+        <h1>دليل الوسطاء الموثوقين</h1>
+        <p>تأكد من هوية الوسيط عبر الصور والبيانات الرسمية</p>
     </header>
 
-    <main class="card-grid">
-        <!-- كارت الوسيط الأول -->
+    <div class="card-grid">
+        <!-- كارت عبد الله -->
         <div class="card">
             <div class="profile-frame">
-                <img src="seif.jpg" alt="Seif Din">
+                <img src="abdallah.jpg" alt="Abdallah Bendal">
             </div>
-            <div class="badge">
-                <span data-ar="وسيط موثوق" data-en="Trusted Middleman">وسيط موثوق</span>
-            </div>
-            <h2>Seif Din Blkhal</h2>
-            <p class="desc" data-ar="مطور النظام ووسيط معتمد - ضمان وأمان." data-en="System developer & certified middleman.">مطور النظام ووسيط معتمد - ضمان وأمان.</p>
-            <div class="actions">
-                <button class="btn primary" data-ar="بيانات الدفع" data-en="Payment Info">بيانات الدفع</button>
-                <button class="btn secondary" data-ar="الملف الشخصي" data-en="Profile">الملف الشخصي</button>
-            </div>
-        </div>
-
-        <!-- كارت الوسيط الثاني -->
-        <div class="card">
-            <div class="profile-frame">
-                <img src="fahd.jpg" alt="Fahd">
-            </div>
-            <div class="badge">
-                <span data-ar="وسيط موثوق" data-en="Trusted Middleman">وسيط موثوق</span>
-            </div>
-            <h2>Fahd L-y</h2>
-            <p class="desc" data-ar="وسيط موثوق لضمان حقوق الأطراف." data-en="Trusted middleman for party rights.">وسيط موثوق لضمان حقوق الأطراف.</p>
-            <div class="actions">
-                <button class="btn primary" data-ar="بيانات الدفع" data-en="Payment Info">بيانات الدفع</button>
-                <button class="btn secondary" data-ar="الملف الشخصي" data-en="Profile">الملف الشخصي</button>
-            </div>
-        </div>
-
-        <!-- كارت الوسيط الثالث -->
-        <div class="card">
-            <div class="profile-frame">
-                <img src="abdallah.jpg" alt="Abdallah">
-            </div>
-            <div class="badge">
-                <span data-ar="وسيط موثوق" data-en="Trusted Middleman">وسيط موثوق</span>
-            </div>
+            <span class="badge">وسيط موثوق</span>
             <h2>Abdallah Bendal</h2>
-            <p class="desc" data-ar="وسيط معتمد لخدمات الألعاب والتحويلات." data-en="Certified for gaming and transfers.">وسيط معتمد لخدمات الألعاب والتحويلات.</p>
+            <p class="desc">وسيط معتمد لخدمات الألعاب والتحويلات.</p>
             <div class="actions">
-                <button class="btn primary" data-ar="بيانات الدفع" data-en="Payment Info">بيانات الدفع</button>
-                <button class="btn secondary" data-ar="الملف الشخصي" data-en="Profile">الملف الشخصي</button>
+                <button class="btn primary">بيانات الدفع</button>
+                <button class="btn secondary">الملف الشخصي</button>
             </div>
         </div>
-    </main>
 
-    <script src="script.js"></script>
+        <!-- كارت فهد -->
+        <div class="card">
+            <div class="profile-frame">
+                <img src="fahd.jpg" alt="Fahd L-y">
+            </div>
+            <span class="badge">وسيط موثوق</span>
+            <h2>Fahd L-y</h2>
+            <p class="desc">وسيط موثوق لضمان حقوق الأطراف.</p>
+            <div class="actions">
+                <button class="btn primary">بيانات الدفع</button>
+                <button class="btn secondary">الملف الشخصي</button>
+            </div>
+        </div>
+
+        <!-- كارت سيف الدين -->
+        <div class="card">
+            <div class="profile-frame">
+                <img src="seif.jpg" alt="Seif Din Blkhal">
+            </div>
+            <span class="badge">وسيط موثوق</span>
+            <h2>Seif Din Blkhal</h2>
+            <p class="desc">مطور النظام ووسيط معتمد - ضمان وأمان.</p>
+            <div class="actions">
+                <button class="btn primary">بيانات الدفع</button>
+                <button class="btn secondary">الملف الشخصي</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
