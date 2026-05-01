@@ -1,0 +1,78 @@
+:root {
+    --primary-blue: #0046a0; /* لون بيس الشهير */
+    --accent-green: #00ff85;
+    --dark-bg: #0b0e14;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('https://images.alphacoders.com/103/1033934.jpg') no-repeat center center fixed; /* خلفية ملعب */
+    background-size: cover;
+    transition: all 0.3s ease;
+}
+
+/* طبقة تظليل فوق الخلفية لإبراز المحتوى */
+.overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+.controls {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--accent-green);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    color: white;
+    width: 280px;
+    transform: skew(-2deg); /* حركة مائلة رياضية */
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05) skew(0deg);
+    box-shadow: 0 0 20px var(--accent-green);
+}
+
+.profile-img-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    border: 4px solid var(--accent-green);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.btn-pay {
+    background: var(--accent-green);
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* الوضع الفاتح */
+body.light-mode .overlay { background: rgba(255, 255, 255, 0.4); }
+body.light-mode .card { background: rgba(0, 0, 0, 0.8); }
