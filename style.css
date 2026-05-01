@@ -1,102 +1,104 @@
-/* --- إعدادات الألوان والمتغيرات --- */
+/* --- إعدادات الألوان (نمط eFootball 2026) --- */
 :root {
     --primary-bg: #05070a;
-    --accent-green: #00ff85; /* لون النيون الشهير في اللعبة */
-    --efootball-blue: #0046a0;
+    --accent-green: #00ff85; /* أخضر نيون */
     --text-main: #ffffff;
-    --card-bg: rgba(11, 14, 20, 0.85); /* تعتيم الكارت ليبرز فوق الزخرفة */
+    --card-bg: rgba(10, 15, 25, 0.9); /* تقليل الشفافية لبروز الكارت */
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
     background-color: var(--primary-bg);
     color: var(--text-main);
     overflow-x: hidden;
 }
 
-/* --- الخلفية الرئيسية (eFootball Stadium) --- */
+/* --- الخلفية: ميسي والملعب بوضوح عالي --- */
 body::before {
     content: "";
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* رابط خلفية رسمية للعبة */
     background-image: url('https://images.wallpapersden.com/image/download/efootball-2024-lionel-messi_bWlpZmqUmZqaraWkpJRmbmdlrWdtbW0.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.4; /* وضوح الخلفية */
+    opacity: 0.85; /* زيادة الوضوح لتظهر صورة ميسي بقوة */
     z-index: -1;
-    filter: saturate(1.2) contrast(1.1);
+    filter: saturate(1.3) contrast(1.1);
 }
 
-/* --- إضافة زخارف نيون متحركة خلف الكروت --- */
+/* طبقة تظليل سفلية لسهولة القراءة */
 body::after {
     content: "";
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(0, 255, 133, 0.05) 0%, transparent 70%);
-    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
     z-index: -1;
 }
 
-/* --- الهيدر مع زخرفة علوية --- */
+/* --- الشعار العلوي --- */
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.ef-logo {
+    width: 180px;
+    filter: drop-shadow(0 0 15px var(--accent-green));
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 5px var(--accent-green)); }
+    to { filter: drop-shadow(0 0 20px var(--accent-green)); }
+}
+
 header {
     text-align: center;
-    padding: 50px 20px;
-    border-bottom: 2px solid rgba(0, 255, 133, 0.1);
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+    padding: 30px 20px;
 }
 
 h1 {
     color: var(--accent-green);
-    font-size: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 20px rgba(0, 255, 133, 0.6);
-    margin: 0;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
 }
 
-/* --- حاوية الكروت والزخرفة --- */
+/* --- تنسيق الكروت (بدون لمس الصور) --- */
 .card-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 40px;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 30px;
+    padding: 20px;
 }
 
-/* --- الكارت (بدون لمس محتواه الداخلي) --- */
 .card {
     background: var(--card-bg);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 5px solid var(--accent-green); /* زخرفة جانبية مثل واجهة اللعبة */
-    border-radius: 15px;
-    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 133, 0.3);
+    border-radius: 20px;
+    padding: 25px;
     width: 280px;
     text-align: center;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: 0.3s;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
 }
 
 .card:hover {
-    transform: scale(1.05) rotate(1deg);
-    border-left-width: 10px;
-    box-shadow: 0 0 40px rgba(0, 255, 133, 0.2);
+    transform: translateY(-10px);
+    border-color: var(--accent-green);
 }
 
-/* --- الحفاظ على صور الوسطاء كما هي --- */
+/* إطار الصورة الشخصية */
 .profile-frame {
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 20px;
+    width: 125px;
+    height: 125px;
+    margin: 0 auto 15px;
     border-radius: 50%;
     border: 3px solid var(--accent-green);
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 255, 133, 0.4);
+    box-shadow: 0 0 15px var(--accent-green);
 }
 
 .profile-frame img {
@@ -106,45 +108,49 @@ h1 {
 }
 
 .badge {
-    background: rgba(0, 255, 133, 0.1);
     color: var(--accent-green);
-    padding: 4px 12px;
-    border-radius: 20px;
+    border: 1px solid var(--accent-green);
+    padding: 3px 10px;
+    border-radius: 15px;
     font-size: 0.8rem;
     display: inline-block;
-    margin-bottom: 15px;
-    border: 1px solid var(--accent-green);
+    margin-bottom: 10px;
 }
 
-/* --- الأزرار بنمط رياضي --- */
+/* الأزرار */
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .btn.primary {
-    background: linear-gradient(45deg, var(--accent-green), #00cc6a);
+    background-color: var(--accent-green);
     color: #000;
-    border-radius: 5px;
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); /* شكل مائل للأزرار */
 }
 
 .btn.secondary {
-    background: transparent;
-    border: 1px solid var(--efootball-blue);
+    background-color: transparent;
     color: #4da3ff;
-    border-radius: 5px;
-    margin-top: 5px;
+    border: 1px solid #4da3ff;
 }
 
-/* --- إعدادات اللغة والوضع --- */
+/* شريط اللغة */
 .top-nav {
+    padding: 10px;
     display: flex;
-    justify-content: flex-end;
-    padding: 20px;
+    gap: 10px;
 }
 
 .nav-btn {
-    background: #1a1a1a;
+    background: rgba(0,0,0,0.6);
     color: white;
-    border: 1px solid #333;
-    padding: 5px 15px;
+    border: 1px solid #444;
+    padding: 5px 12px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-left: 10px;
-    font-size: 0.8rem;
 }
