@@ -4,98 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دليل الوسطاء الموثوقين</title>
-    <style>
-        :root { --bg: #000000; --card: #111111; --green: #00e676; --white: #ffffff; --gray: #b0b0b0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--white); margin: 0; padding: 20px; }
-        header { text-align: center; padding: 40px 20px; border-bottom: 1px solid #222; }
-        header h1 { color: var(--green); margin: 0; font-size: 2.2em; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 30px auto; }
-        .card { background: var(--card); border-radius: 20px; padding: 25px; border: 1px solid #333; text-align: center; transition: 0.3s; }
-        .card:hover { border-color: var(--green); transform: translateY(-5px); }
-        .card img { width: 130px; height: 130px; border-radius: 50%; border: 3px solid var(--green); object-fit: cover; margin-bottom: 15px; background: #222; }
-        .status { color: var(--green); font-weight: bold; font-size: 0.9em; display: block; margin-bottom: 10px; }
-        .btn-group { display: flex; flex-direction: column; gap: 10px; }
-        .info-btn { background: var(--green); color: black; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        .fb-btn { background: transparent; color: #1877F2; border: 1px solid #1877F2; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; }
-        .modal-content { background: #1a1a1a; margin: 15vh auto; padding: 30px; width: 85%; max-width: 400px; border-radius: 20px; border: 1px solid var(--green); text-align: center; }
-        .copy-row { display: flex; justify-content: space-between; background: #252525; padding: 12px; margin: 10px 0; border-radius: 10px; }
-        .copy-btn { background: var(--green); border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8em; font-weight: bold; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- شريط التحكم العلوي -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <button id="themeToggle" class="nav-btn">🌙</button>
+            <button id="langToggle" class="nav-btn">English</button>
+        </div>
+    </nav>
 
-<header>
-    <h1>🛡️ دليل الوسطاء الموثوقين</h1>
-    <p>تأكد من هوية الوسيط عبر الصور والبيانات الرسمية</p>
-</header>
+    <header>
+        <div class="logo-area">
+            <h1 data-ar="دليل الوسطاء الموثوقين" data-en="Trusted Middlemen Directory">دليل الوسطاء الموثوقين</h1>
+            <p data-ar="تأكد من هوية الوسيط عبر الصور والبيانات الرسمية" data-en="Verify identity via official photos and data">تأكد من هوية الوسيط عبر الصور والبيانات الرسمية</p>
+        </div>
+    </header>
 
-<div class="grid" id="container"></div>
-
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <h2 id="m-name" style="color: var(--green);"></h2>
-        <div id="m-details"></div>
-        <button onclick="closeModal()" style="width: 100%; margin-top: 20px; padding: 10px; border-radius: 10px; border: none; background: #333; color: white; cursor: pointer;">إغلاق</button>
-    </div>
-</div>
-
-<script>
-    const middlemen = [
-        {
-            name: "Abdallah Bendal",
-            image: "487330059_647294354900439_6909264478665023175_n.jpg",
-            fb: "https://www.facebook.com/search/top?q=abdallah%20bendal",
-            bio: "وسيط معتمد لخدمات الألعاب والتحويلات.",
-            phone: "06XXXXXXXX",
-            rip: "0079999900XXXXXXXXXX"
-        },
-        {
-            name: "Fahd L-y",
-            image: "667807743_1988536058539268_8007520388332275956_n.jpg",
-            fb: "https://www.facebook.com/search/top?q=fahd%20l-y",
-            bio: "وسيط موثوق لضمان حقوق الأطراف.",
-            phone: "05XXXXXXXX",
-            rip: "0079999900XXXXXXXXXX"
-        },
-        {
-            name: "Seif Din Blkhal",
-            image: "669885852_122132688795034284_3950083065487782380_n.jpg",
-            fb: "https://www.facebook.com/search/top?q=seif%20din%20blkhal",
-            bio: "مطور النظام ووسيط معتمد - ضمان وأمان.",
-            phone: "07XXXXXXXX",
-            rip: "0079999900XXXXXXXXXX"
-        }
-    ];
-
-    function render() {
-        const container = document.getElementById('container');
-        container.innerHTML = middlemen.map((m, index) => `
-            <div class="card">
-                <img src="${m.image}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/130/222/00e676?text=Image+Loading'">
-                <span class="status">✅ وسيط موثق</span>
-                <h3>${m.name}</h3>
-                <p style="color: var(--gray); font-size: 0.9em; margin-bottom: 20px;">${m.bio}</p>
-                <div class="btn-group">
-                    <button class="info-btn" onclick="openModal(${index})">بيانات الدفع</button>
-                    <a href="${m.fb}" target="_blank" class="fb-btn">الملف الشخصي</a>
-                </div>
+    <main class="card-grid">
+        <!-- كارت الوسيط الأول -->
+        <div class="card">
+            <div class="profile-frame">
+                <img src="seif.jpg" alt="Seif Din">
             </div>
-        `).join('');
-    }
+            <div class="badge">
+                <span data-ar="وسيط موثوق" data-en="Trusted Middleman">وسيط موثوق</span>
+            </div>
+            <h2>Seif Din Blkhal</h2>
+            <p class="desc" data-ar="مطور النظام ووسيط معتمد - ضمان وأمان." data-en="System developer & certified middleman.">مطور النظام ووسيط معتمد - ضمان وأمان.</p>
+            <div class="actions">
+                <button class="btn primary" data-ar="بيانات الدفع" data-en="Payment Info">بيانات الدفع</button>
+                <button class="btn secondary" data-ar="الملف الشخصي" data-en="Profile">الملف الشخصي</button>
+            </div>
+        </div>
 
-    function openModal(index) {
-        const m = middlemen[index];
-        document.getElementById('m-name').innerText = m.name;
-        document.getElementById('m-details').innerHTML = `
-            <div class="copy-row"><span>الهاتف: ${m.phone}</span><button class="copy-btn" onclick="copy('${m.phone}')">نسخ</button></div>
-            <div class="copy-row"><span>RIP: ${m.rip}</span><button class="copy-btn" onclick="copy('${m.rip}')">نسخ</button></div>
-        `;
-        document.getElementById('modal').style.display = 'block';
-    }
-    function closeModal() { document.getElementById('modal').style.display = 'none'; }
-    function copy(txt) { navigator.clipboard.writeText(txt); alert("تم النسخ!"); }
-    render();
-</script>
+        <!-- كارت الوسيط الثاني -->
+        <div class="card">
+            <div class="profile-frame">
+                <img src="fahd.jpg" alt="Fahd">
+            </div>
+            <div class="badge">
+                <span data-ar="وسيط موثوق" data-en="Trusted Middleman">وسيط موثوق</span>
+            </div>
+            <h2>Fahd L-y</h2>
+            <p class="desc" data-ar="وسيط موثوق لضمان حقوق الأطراف." data-en="Trusted middleman for party rights.">وسيط موثوق لضمان حقوق الأطراف.</p>
+            <div class="actions">
+                <button class="btn primary" data-ar="بيانات الدفع" data-en="Payment Info">بيانات الدفع</button>
+                <button class="btn secondary" data-ar="الملف الشخصي" data-en="Profile">الملف الشخصي</button>
+            </div>
+        </div>
+
+        <!-- كارت الوسيط الثالث -->
+        <div class="card">
+            <div class="profile-frame">
+                <img src="abdallah.jpg" alt="Abdallah">
+            </div>
+            <div class="badge">
+                <span data-ar="وسيط موثوق" data-en="Trusted Middleman">وسيط موثوق</span>
+            </div>
+            <h2>Abdallah Bendal</h2>
+            <p class="desc" data-ar="وسيط معتمد لخدمات الألعاب والتحويلات." data-en="Certified for gaming and transfers.">وسيط معتمد لخدمات الألعاب والتحويلات.</p>
+            <div class="actions">
+                <button class="btn primary" data-ar="بيانات الدفع" data-en="Payment Info">بيانات الدفع</button>
+                <button class="btn secondary" data-ar="الملف الشخصي" data-en="Profile">الملف الشخصي</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
