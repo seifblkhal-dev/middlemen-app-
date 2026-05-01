@@ -1,78 +1,143 @@
+/* --- الألوان الرئيسية (نمط PES الداكن) --- */
 :root {
-    --primary-blue: #0046a0; /* لون بيس الشهير */
-    --accent-green: #00ff85;
-    --dark-bg: #0b0e14;
-    --card-bg: rgba(255, 255, 255, 0.1);
+    --primary-bg: #0b0e14;
+    --card-bg: rgba(255, 255, 255, 0.08); /* تأثير زجاجي */
+    --accent-green: #00ff85; /* أخضر نيون فسفوري */
+    --text-main: #ffffff;
+    --text-sub: #b0b3b8;
+    --btn-blue: #0056cc;
 }
 
 body {
     margin: 0;
+    padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: url('https://images.alphacoders.com/103/1033934.jpg') no-repeat center center fixed; /* خلفية ملعب */
-    background-size: cover;
-    transition: all 0.3s ease;
+    background-color: var(--primary-bg);
+    color: var(--text-main);
+    overflow-x: hidden;
 }
 
-/* طبقة تظليل فوق الخلفية لإبراز المحتوى */
-.overlay {
+/* طبقة خلفية (ملعب) */
+body::before {
+    content: "";
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://w0.peakpx.com/wallpaper/547/988/HD-wallpaper-football-field-top-view-green-grass-lights-stadium-aerial-view-green-pitch-football.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
     z-index: -1;
 }
 
-.controls {
-    padding: 15px;
+/* شريط التحكم (اللغة والوضع) */
+.controls-bar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
     display: flex;
+    gap: 8px;
+    z-index: 1000;
+}
+
+.ctrl-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+}
+
+header {
+    text-align: center;
+    padding: 60px 20px 30px;
+}
+
+h1 {
+    color: var(--accent-green);
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(0, 255, 133, 0.5);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    justify-items: center;
+}
+
+/* --- الكارت والتنسيق الرياضي --- */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(0, 255, 133, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+    transform: skew(-1deg); /* ميلة رياضية */
+}
+
+/* --- هنا الحل لمشكلة الصورة العملاقة --- */
+.profile-frame {
+    width: 120px; /* تحديد عرض الدائرة */
+    height: 120px; /* تحديد ارتفاع الدائرة */
+    margin: 0 auto 20px;
+    border-radius: 50%; /* جعل الإطار دائرياً */
+    border: 4px solid var(--accent-green); /* الإطار الأخضر */
+    overflow: hidden; /* **هام جداً:** قص أي جزء من الصورة يخرج عن الإطار */
+    box-shadow: 0 0 15px var(--accent-green);
+}
+
+.profile-frame img {
+    width: 100%; /* جعل عرض الصورة يملأ الإطار */
+    height: 100%; /* جعل ارتفاع الصورة يملأ الإطار */
+    object-fit: cover; /* **هام جداً:** الحفاظ على أبعاد الصورة وقص الزائد دون تمطيطها */
+}
+/* --- نهاية حل مشكلة الصورة --- */
+
+.badge {
+    color: var(--accent-green);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 1.4rem;
+}
+
+.desc {
+    color: var(--text-sub);
+    font-size: 0.95rem;
+    height: 45px;
+    margin-bottom: 20px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
-.card-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 50px;
-}
-
-.card {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--accent-green);
-    border-radius: 20px;
-    padding: 25px;
-    text-align: center;
-    color: white;
-    width: 280px;
-    transform: skew(-2deg); /* حركة مائلة رياضية */
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05) skew(0deg);
-    box-shadow: 0 0 20px var(--accent-green);
-}
-
-.profile-img-container {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 15px;
-    border: 4px solid var(--accent-green);
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.btn-pay {
-    background: var(--accent-green);
-    color: black;
-    font-weight: bold;
+.btn {
+    padding: 10px;
+    border-radius: 8px;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    font-weight: bold;
     width: 100%;
-    margin-bottom: 10px;
-    cursor: pointer;
 }
 
-/* الوضع الفاتح */
-body.light-mode .overlay { background: rgba(255, 255, 255, 0.4); }
-body.light-mode .card { background: rgba(0, 0, 0, 0.8); }
+.btn.primary {
+    background-color: var(--accent-green);
+    color: black;
+}
+
+.btn.secondary {
+    background-color: transparent;
+    border: 1px solid var(--btn-blue);
+    color: var(--btn-blue);
+}
